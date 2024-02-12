@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Email</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="index.js"></script>
+</head>
+<body>
+    <div class="container">
+        <form onsubmit="sendEmail(); reset(); return false">
+            <h3>GET YOUR MESSAGE HERE</h3>
+            <input type="text" id="name" placeholder="Name" required>
+            <input type="email" id="email" placeholder="Email" required>
+            <input type="text" id="phone" placeholder="Phone Number" required>
+            <textarea id="message" rows="4" placeholder="Message" ></textarea>
+            <button type="sumbit">Send</button>
+
+            
+      
+
+        </form>
+        <script src="https://smtpjs.com/v3/smtp.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+        <script>
+            function sendEmail(){
+Email.send({
+    Host : "smtp.gmail.com",
+    Username :"ananthulavaishnavi@gmail.com",
+    Password : "924CFCC532223873DB8E3AAC3114056F9AB9",
+    To : 'ananthulavaishnavi@gmail.com',
+    From : "ananthulavaishnavi@gmail.com",
+    Subject : "New Contact from Enquiry",
+    Body : "Name:"+document.getElementById("name").value
+    + "<br> Email:"+document.getElementById("email").value
+    +"<br> phone no:"+document.getElementById("phone").value
+    +"<br> Message:"+document.getElementById("message").value
+}).then(message=>{
+    if(message=="OK"){
+
+
+Swal.fire({
+  title: "Success",
+  text: "Message Sent",
+  icon: "success"
+});
+}
+}
+
+);
+}
+
+        </script>
+
+    </div>
+    
+</body>
+</html>
